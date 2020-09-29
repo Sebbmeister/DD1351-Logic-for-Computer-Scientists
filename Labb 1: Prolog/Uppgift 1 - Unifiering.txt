@@ -1,0 +1,19 @@
+**************************************************
+Uppgift 1: Unifiering
+
+    Betrakta denna fråga till ett Prologsystem:
+
+    ?- T=f(a,Y,Z), T=f(X,X,b).
+
+    Vilka bindningar presenteras som resultat?
+
+    Ge en kortfattad förklaring till ditt svar!
+
+**************************************************
+
+Eftersom T=T måste gälla så kommer prologsystemet att göra följande bindningar:
+
+a - X, Y - X och Z - b
+
+Båda variablerna "X" och "Y" kommer alltså att unifieras med atomen "a" och
+variabeln "Z" kommer att unifieras med atomen b.

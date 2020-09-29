@@ -1,0 +1,23 @@
+**************************************************
+Uppgift 2: Negation
+
+    I Prolog hanteras negation oftast med "negation-as failure". 
+
+    Förklara denna princip och ge ett enkelt exempel! 
+
+**************************************************
+
+Om satsen A är falsk, så är dess negation, icke-A (¬A) sann. Principen
+negation-as-failure betyder att man kan bevisa ¬A genom att försöka (och
+misslyckas med) att bevisa A. Den "failure" som kommer av att försöka bevisa
+A  bevisar i sin tur A:s negation.
+
+Exempel på negation-as-failure ("\+" i prolog):
+
+far(hans, klaus).            - skapar relation
+utanfar(X) :- \+ far(X,_).   - "utanfar" är true om man misslyckas med att 
+                               hitta en far till X
+
+? - utanfar(hans).           - kommer ge false; hans har far klaus
+? - utanfar(klaus).          - kommer ge true; vi kan inte hitta en far till
+                               klaus -> alltså har klaus inte en far
