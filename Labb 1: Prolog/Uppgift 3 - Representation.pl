@@ -37,7 +37,7 @@ remove_duplicates(L, E) :- reverselist(L, R), remove_duplicates2(R, R2), reverse
 
 remove_duplicates2([], []).
 remove_duplicates2([H|T], NewT) :- member(H, T), remove_duplicates2(T, NewT).
-remove_duplicates2([H|T], [H|NewT]) :- not(member(H, T)), remove_duplicates2(T, NewT).
+remove_duplicates2([H|T], [H|NewT]) :- \+ (member(H, T)), remove_duplicates2(T, NewT).
 
 /* Anteckningar:
 remove_duplicates2/2:
