@@ -12,12 +12,15 @@ negation-as-failure betyder att man kan bevisa ¬A genom att försöka (och
 misslyckas med) att bevisa A. Den "failure" som kommer av att försöka bevisa
 A  bevisar i sin tur A:s negation.
 
-Exempel på negation-as-failure ("\+" i prolog):
+Exempel på negation-as-failure:
 
-far(hans, klaus).            - skapar relation
-utanfar(X) :- \+ far(X,_).   - "utanfar" är true om man misslyckas med att 
-                               hitta en far till X
+negation(X) :- X, !, fail.
+negation(X).
 
-? - utanfar(hans).           - kommer ge false; hans har far klaus
-? - utanfar(klaus).          - kommer ge true; vi kan inte hitta en far till
-                               klaus -> alltså har klaus inte en far
+far(hans, klaus).                    - skapar relation
+utanfar(X) :- negation(far(X,_)).    - "utanfar" är true om man misslyckas med att 
+                                       hitta en far till X
+
+? - utanfar(hans).                   - kommer ge false; hans har far klaus
+? - utanfar(klaus).                  - kommer ge true; vi kan inte hitta en far till
+                                       klaus -> alltså har klaus inte en far
